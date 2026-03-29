@@ -1,30 +1,113 @@
 body {
-    font-family: Arial;
-    background: #f4f6f8;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #eef1f5;
+}
+
+/* AUTH */
+.center {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
-
-.container {
-    width: 400px;
+.card {
     background: white;
-    padding: 20px;
-    margin-top: 50px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
-#chat {
-    height: 300px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
+input {
+    width: 100%;
+    padding: 12px;
     margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+button {
     padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+.hidden { display: none; }
+
+/* APP */
+.app {
+    display: flex;
+    height: 100vh;
 }
 
+/* SIDEBAR */
+.sidebar {
+    width: 30%;
+    background: white;
+    border-right: 1px solid #ddd;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+#chatList div, #searchResults div {
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+#chatList div:hover { background: #f0f0f0; }
+#searchResults div { background: #f9f9f9; }
+
+/* CHAT AREA */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+.back { display: none; }
+
+/* MESSAGES */
+#messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
 .message {
-    margin: 5px 0;
-    padding: 8px;
-    background: #e3f2fd;
-    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 12px;
+    max-width: 60%;
+}
+.sent {
+    background: #111;
+    color: white;
+    margin-left: auto;
+}
+.received {
+    background: #e0e0e0;
+}
+
+/* INPUT */
+.input-area {
+    display: flex;
+    padding: 10px;
+    background: white;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .sidebar { width: 100%; }
+    .chat-area { display: none; }
+    .chat-area.active { display: flex; }
+    .back { display: block; }
 }

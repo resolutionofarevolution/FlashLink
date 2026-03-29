@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chat App</title>
+    <title>FlashLink</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
-<div class="container">
-    <h2>Simple Chat</h2>
+<!-- STEP 1 -->
+<div id="step1" class="center">
+    <div class="card">
+        <h1>FlashLink</h1>
+        <input id="userInput" placeholder="Enter Email or Phone">
+        <button onclick="checkUser()">Continue</button>
+    </div>
+</div>
 
-    <input id="username" placeholder="Enter email or phone">
-    <button onclick="joinChat()">Join</button>
+<!-- STEP 2 -->
+<div id="step2" class="center hidden">
+    <div class="card">
+        <h2 id="stepTitle"></h2>
 
-    <div id="chat"></div>
+        <input id="nameInput" placeholder="Full Name" class="hidden">
+        <input id="passwordInput" type="password" placeholder="Password">
 
-    <input id="message" placeholder="Type message">
-    <button onclick="sendMessage()">Send</button>
+        <button onclick="proceedAuth()">Continue</button>
+    </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="app hidden">
+
+    <!-- LEFT: CHAT LIST -->
+    <div class="sidebar">
+        <h3>Chats</h3>
+        <div id="chatList"></div>
+
+        <h4>Start New</h4>
+        <input placeholder="Search users..." onkeyup="searchUser(this.value)">
+        <div id="searchResults"></div>
+    </div>
+
+    <!-- RIGHT: CHAT -->
+    <div class="chat-area">
+        <div class="chat-header">
+            <button class="back" onclick="goBack()">←</button>
+            <div>
+                <div id="chatName"></div>
+                <small id="status">offline</small>
+            </div>
+        </div>
+
+        <div id="messages"></div>
+
+        <div class="input-area">
+            <input id="msg" placeholder="Type message">
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
 </div>
 
 <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
