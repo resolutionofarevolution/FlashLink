@@ -17,11 +17,10 @@ app = Flask(__name__)
 # DATABASE CONFIG (RENDER + LOCAL)
 # =========================
 
-if os.getenv("RENDER"):
-    os.makedirs("/data", exist_ok=True)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////data/flashlink.db'
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flashlink.db'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(BASE_DIR, "flashlink.db")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
