@@ -16,7 +16,9 @@ app = Flask(__name__)
 # =========================
 # DATABASE CONFIG (RENDER + LOCAL)
 # =========================
+
 if os.getenv("RENDER"):
+    os.makedirs("/data", exist_ok=True)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////data/flashlink.db'
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flashlink.db'
